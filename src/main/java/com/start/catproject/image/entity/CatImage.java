@@ -15,7 +15,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 @Getter
-@Table(name = "catImages")
+@Table(name = "cat_image")
 @Entity
 public class CatImage extends BaseEntity {
 

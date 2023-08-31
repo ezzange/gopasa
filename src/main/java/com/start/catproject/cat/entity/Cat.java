@@ -2,10 +2,11 @@ package com.start.catproject.cat.entity;
 
 import com.start.catproject.audit.BaseEntity;
 import com.start.catproject.catItem.Entity.CatItem;
-import com.start.catproject.category.entity.DetailCategory;
+import com.start.catproject.category.entity.CatCategory;
 import com.start.catproject.image.entity.CatImage;
 import com.start.catproject.user.entity.User;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -14,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@SuperBuilder
 @Entity
 @Getter
 @Table(name = "cats")
@@ -52,7 +54,7 @@ public class Cat extends BaseEntity {
 
     @ToString.Exclude
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    private DetailCategory detailCategory;
+    private CatCategory catCategory;
 
 
     public void addUser(User user) {
@@ -68,9 +70,9 @@ public class Cat extends BaseEntity {
         this.catImages.add(catImage);
     }
 
-    public void addDetailCategory(DetailCategory detailCategory){
-        this.detailCategory = detailCategory;
-        detailCategory.addCat(this);
+    public void addDetailCategory(CatCategory catCategory){
+        this.catCategory = catCategory;
+        catCategory.addCat(this);
     }
 
 }

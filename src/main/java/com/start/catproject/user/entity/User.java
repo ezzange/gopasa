@@ -46,7 +46,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @Setter
-    private Authority authority;
+    private Authority role;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH, orphanRemoval = true)
